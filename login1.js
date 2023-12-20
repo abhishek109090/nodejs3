@@ -208,7 +208,7 @@ function generateCRN() {
           district,
           state,
           feildcrn,
-          ownerId,
+         
         } = request.body;
     
         const { uploadAadhar, uploadPan } = request.files;
@@ -247,7 +247,7 @@ function generateCRN() {
           district,
           state,
           feildcrn,
-          ownerId,
+        
           crn,
           filenames,
         });
@@ -276,7 +276,7 @@ function generateCRN() {
         throw error;  
       }
     };
-    
+     const ownerId = generateRandomAgentId();
     // Function to insert owner data into the MySQL database
     const insertOwnerDataIntoDB = async ({
       ownername,
@@ -300,7 +300,7 @@ function generateCRN() {
       district,
       state,
       feildcrn,
-      ownerId,
+    
       crn,
       filenames,
     }) => {
@@ -348,7 +348,11 @@ function generateCRN() {
         );
       });
     };
-    
+    function generateRandomAgentId() {
+  const min = 10000000; // Minimum 6-digit number
+  const max = 99999999; // Maximum 6-digit number
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
   const authenticateAgent = (request, response) => {
     const { phonenumber, password } = request.body;
   

@@ -46,14 +46,14 @@ app.use(
       pool.end();
     });
   }
-    const allowedOrigins = ['https://trucksbooking.in/' ,'http://localhost:3000']; // Add the origins you want to allow
+   const allowedOrigins = ['https://trucksbooking.in', 'https://agent.trucksbooking.in'];
 
-    // Configure the CORS middleware with the allowed origins
-    app.use(cors({
-      origin: '*',
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
-      allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
-    }));
+// Enable CORS for the specified origins
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
+}));
     
       
        
@@ -236,10 +236,10 @@ app.post('/addnewrecord', db5.createDriving)
 
 app.put('/booking/:id', db4.deleteBooking)
 app.use('/uploads', express.static('uploads'));
-app.get('/truck', db5.getTruck)
+app.get('/truck/:crn', db5.getTruck)
 app.get('/truckverify', db5.getTruckverification)
 
-app.get('/truck/:id', db5.getTruckById)
+app.get('/trucks/:id', db5.getTruckById)
 app.post('/Owner', upload.fields([
   { name: 'uploadAadhar', maxCount: 1 },
   { name: 'uploadPan', maxCount: 1 }

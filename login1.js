@@ -406,12 +406,12 @@ const getAgentUsers = (request, response) => {
       return;
     }
 
-    console.log('Query result:', results);
+  
 
    
 
     response.status(200).json(results);
-    console.log('Fetched owner data:', results);
+    
   });
 };
   

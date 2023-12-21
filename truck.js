@@ -145,9 +145,9 @@ const getTruckNumber1 = (request, response) => {
     );
 }
 const getTruck = (request, response) => {
-  const {crn}= request.query;
-  console.log(crn)
-  connection.query('select * from truck where crn=$1 ',[crn],async (error, results) => {
+  const {crn}= request.params;
+  console.log('crn',crn)
+  connection.query('select * from truck where crn = ? ',[crn],async (error, results) => {
       if (error) {
         throw error;
       }
@@ -178,10 +178,10 @@ const getTruck = (request, response) => {
           const truckOwnerPassportSizePhotoUrl = await getImageUrl(truck.truckOwnerPassportSizePhoto);
           const rightsideUrl = await getImageUrl(truck.rightside);
           const leftsideUrl = await getImageUrl(truck.leftside);
-
-          return {
-            ...truck,
-            uploadRegistrationUrl,
+  
+          return {   
+            ...truck,    
+            uploadRegistrationUrl,  
             truckFrontSideWithNumberPlateUrl,
             truckBackSideWithNumberPlateUrl,
             truckCabinUrl,

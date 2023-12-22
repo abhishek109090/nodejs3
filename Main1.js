@@ -14,10 +14,10 @@ const db4=require('./Agent')
 const fs = require('fs')
 
 const port = 9001
-app.use(bodyParser.json({ limit: '400mb' }));
+app.use(bodyParser.json({ limit: '500mb' }));
 
 
-app.use(bodyParser.urlencoded({ limit: '400mb', extended: true }));
+app.use(bodyParser.urlencoded({ limit: '500mb', extended: true,parameterLimit:100000 }));
   app.set('maxHeaderSize', 655369); 
   async function getItems() {
     const pool = mysql.createPool({

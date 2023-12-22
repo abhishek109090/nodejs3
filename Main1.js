@@ -46,7 +46,7 @@ app.use(
       pool.end();
     });
   }
-   const allowedOrigins = ['https://trucksbooking.in', 'https://agent.trucksbooking.in'];
+   const allowedOrigins = ['https://trucksbooking.in', 'https://agent.trucksbooking.in','http://localhost:3000'];
 
 // Enable CORS for the specified origins
 app.use(cors({

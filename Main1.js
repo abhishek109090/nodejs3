@@ -43,11 +43,11 @@ app.use(bodyParser.urlencoded({ limit: '400mb', extended: true }));
       pool.end();
     });
   }
-   const allowedOrigins = ['https://trucksbooking.in', 'https://agent.trucksbooking.in','http://localhost:3000'];
+  
 
 // Enable CORS for the specified origins
 app.use(cors({
-  origin: allowedOrigins,
+  origin:'*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
 }));
